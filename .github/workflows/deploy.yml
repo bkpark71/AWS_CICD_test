@@ -6,24 +6,13 @@ on:
       - main
 
 jobs:
-  My-First-CICD-Job:
+  Manual-deployment-Job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: simple-action-test
-        run: echo "This is the first cicd step"
-
-      - name: multiple-commands
+      - name: application.yml 생성
         run: |
-          echo "mult - 1"
-          echo "mult - 2"
+          pwd
+          ls ./src/main/
+          echo ${{ secrets.APPLICATION_YML }} > ./src/main/resources/application.yml
 
-      - name: Github 변수 사용하기
-        run: |
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-
-      - name: Secret 변수 사용하기
-        run: |
-          echo ${{ secrets.USERID }}
-          echo ${{ secrets.PASSWORD }}
