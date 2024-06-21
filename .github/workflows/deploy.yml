@@ -39,7 +39,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
-          source:
+          source: app.jar
           target: /home/ubuntu/project/tobe
       #- name: SSH 로 EC2에 접속하기(프로세스 실행)
 
