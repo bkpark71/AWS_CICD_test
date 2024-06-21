@@ -22,8 +22,6 @@ jobs:
       - name: application.yml 생성(base64 encode)
         run: |
           echo "${{ secrets.APPLICATION_YML }}" > ./src/main/resources/application.yml
-#          echo "${{ secrets.APPLICATION_YML }}" | base64 --decode > ./src/main/resources/application.yml
-          cat ./src/main/resources/application.yml
 
       - name: 테스트 및 빌드하기
         run: |
