@@ -20,7 +20,7 @@ jobs:
           java-version: '17'
 
       - name: application.yml 생성
-        run: echo ${{ secrets.APPLICATION_YML }} > ./src/main/resources/application.yml
+        run: echo "${{ secrets.APPLICATION_YML }}" | base64 --decode > ./src/main/resources/application.yml
 
       - name: 테스트 및 빌드하기
         run: |
