@@ -10,9 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Github repository 소스 가져오기
+        uses: actions/checkout@v4
+
+      - name: JDK 17 설치하기
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: application.yml 생성
+        run: echo ${{ secrets.APPLICATION_YML }} > ./src/main/resources/application.yml
+
+      - name: 테스트 및 빌드하기
         run: |
-          pwd
-          ls ./src/main/
-          echo ${{ secrets.APPLICATION_YML }} > ./src/main/resources/application.yml
+          chmod +x ./gradlew
+          ./gradlew clean build
+
+      - name: jar 파일명 변경하기
+        run: mv ./build/libs/*SNAPSHOT.jar ./app.jar
+
+      #- name: EC2 로 jar 파일 전송하기
+      #- name: SSH 로 EC2에 접속하기(프로세스 실행)
 
