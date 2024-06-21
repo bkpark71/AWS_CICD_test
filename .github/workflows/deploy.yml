@@ -1,0 +1,14 @@
+name: Github Actions 실행하기
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  My-First-CICD-Job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: simple-action-test
+        run: echo "This is the first cicd step"
